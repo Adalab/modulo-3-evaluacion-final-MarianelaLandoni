@@ -1,13 +1,20 @@
-function CharacterItem() {
+function CharacterItem(props) {
+  const defaultImage = (img) => {
+    if (img === '') {
+      return 'https://image.winudf.com/v2/image1/Y29tLmVyZ2UuaGFycnlwd3Bfc2NyZWVuXzBfMTU0ODk0NDk2OV8wNTE/screen-0.jpg?fakeurl=1&type=.webp';
+    } else {
+      return props.character.image;
+    }
+  };
   return (
     <li>
       <img
-        src="https://wl-genial.cf.tsp.li/resize/728x/jpg/fb1/d1b/28cce45b038d6baddba3db025d.jpg"
-        alt=""
-        title=""
+        src={defaultImage(props.character.image)}
+        alt={`Foto de ${props.character.name}`}
+        title={`Foto de ${props.character.name}`}
       />
-      <h3>Nombre del personaje</h3>
-      <p>Especie</p>
+      <h3>{props.character.name}</h3>
+      <p>{props.character.species}</p>
     </li>
   );
 }

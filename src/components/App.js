@@ -7,7 +7,7 @@ import Footer from './Footer';
 import CharacterList from './Characters/CharacterList';
 
 function App() {
-  const [character, setCharacter] = useState([]);
+  const [characterData, setCharacter] = useState([]);
 
   useEffect(() => {
     getDataApi().then((data) => {
@@ -20,7 +20,7 @@ function App() {
     <div>
       <Header />
       <main>
-        <CharacterList />
+        <CharacterList characterData={characterData} />
       </main>
       <Footer />
     </div>
