@@ -3,7 +3,7 @@ function FilterByHouse(props) {
     props.handleFilterHouse(ev.target.value);
   };
   return (
-    <form>
+    <>
       <label htmlFor="filterHouse"> Filtra por casa </label>
       <select
         name="filterHouse"
@@ -17,7 +17,7 @@ function FilterByHouse(props) {
         <option value="Ravenclaw">Ravenclaw</option>
         <option value="Slytherin">Slytherin </option>
       </select>
-    </form>
+    </>
   );
 }
 

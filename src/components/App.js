@@ -5,6 +5,7 @@ import getDataApi from '../services/apiHp';
 import Header from './Header';
 import Footer from './Footer';
 import CharacterList from './Characters/CharacterList';
+import Filters from './Filters/Filters';
 
 import FilterByName from './Filters/FilterByName';
 import FilterByHouse from './Filters/FilterByHouse';
@@ -54,11 +55,9 @@ function App() {
     <div>
       <Header />
       <main>
-        <FilterByName
+        <Filters
           inputValue={searchName}
           handleInputName={handleInputName}
-        />
-        <FilterByHouse
           searchHouse={searchHouse}
           handleFilterHouse={handleFilterHouse}
         />

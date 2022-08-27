@@ -3,19 +3,17 @@ function FilterByName(props) {
     props.handleInputName(ev.target.value);
   };
   return (
-    <form>
-      <label htmlFor="characterName">
-        Escribe un personaje:
-        <input
-          type="text"
-          name="characterName"
-          id=""
-          placeholder="Dobby"
-          value={props.inputValue}
-          onChange={handleInputName}
-        />
-      </label>
-    </form>
+    <label htmlFor="characterName">
+      Escribe un personaje:
+      <input
+        type="text"
+        name="characterName"
+        id=""
+        placeholder="Dobby"
+        value={props.inputValue}
+        onChange={handleInputName}
+      />
+    </label>
   );
 }
 
