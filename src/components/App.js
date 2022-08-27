@@ -5,12 +5,15 @@ import getDataApi from '../services/apiHp';
 import Header from './Header';
 import Footer from './Footer';
 import CharacterList from './Characters/CharacterList';
+
 import FilterByName from './Filters/FilterByName';
+import FilterByHouse from './Filters/FilterByHouse';
 
 function App() {
   //---VARIABLES DE ESTADO---//
   const [characterData, setCharacter] = useState([]);
   const [searchName, setSearchName] = useState('');
+  const [searchHouse, setSearchHouse] = useState('Gryffindor');
 
   //---API---//
 
@@ -30,13 +33,22 @@ function App() {
     setSearchName(value);
   };
 
+  const handleFilterHouse = (value) => {
+    setSearchHouse(value);
+  };
+
   //Renderizar
 
-  const renderCharacterFiltered = characterData.filter((eachCharacter) => {
-    return eachCharacter.name
-      .toLowerCase()
-      .includes(searchName.toLocaleLowerCase());
-  });
+  const characterFiltered = characterData
+    .filter((eachCharacter) => {
+      return eachCharacter.name
+        .toLowerCase()
+        .includes(searchName.toLocaleLowerCase());
+    })
+
+    .filter((eachCharacter) => {
+      return eachCharacter.house === searchHouse;
+    });
 
   return (
     <div>
@@ -46,7 +58,11 @@ function App() {
           inputValue={searchName}
           handleInputName={handleInputName}
         />
-        <CharacterList characterData={renderCharacterFiltered} />
+        <FilterByHouse
+          searchHouse={searchHouse}
+          handleFilterHouse={handleFilterHouse}
+        />
+        <CharacterList characterData={characterFiltered} />
       </main>
       <Footer />
     </div>
