@@ -2,8 +2,11 @@ import FilterByName from './FilterByName';
 import FilterByHouse from './FilterByHouse';
 
 function Filters(props) {
+  const handleForm = (ev) => {
+    ev.preventDefault();
+  };
   return (
-    <form action="" /*onSubmit={}*/>
+    <form action="" onSubmit={handleForm}>
       <FilterByName
         inputValue={props.inputValue}
         handleInputName={props.handleInputName}

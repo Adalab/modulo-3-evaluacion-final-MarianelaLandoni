@@ -3,11 +3,14 @@ import { useState, useEffect } from 'react';
 import { useLocation, matchPath } from 'react-router';
 import { Route, Routes } from 'react-router-dom';
 import getDataApi from '../services/apiHp';
+import ls from '../services/localStorage';
 import Header from './Header';
 import Footer from './Footer';
 import CharacterList from './Characters/CharacterList';
 import Filters from './Filters/Filters';
 import CharacterDetail from './Characters/CharacterDetail';
+
+console.log(ls);
 
 function App() {
   //---VARIABLES DE ESTADO---//
