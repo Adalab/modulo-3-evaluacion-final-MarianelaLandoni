@@ -15,7 +15,7 @@ function FilterByName(props) {
       <input
         type="text"
         name="characterName"
-        id=""
+        id="characterName"
         placeholder="Dobby"
         value={props.inputValue}
         onChange={handleInputName}

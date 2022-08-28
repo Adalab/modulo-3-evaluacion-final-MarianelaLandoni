@@ -11,7 +11,7 @@ function FilterByHouse(props) {
         value={props.searchHouse}
         onChange={handleFilterHouse}
       >
-        <option value="all">Todos</option>
+        <option value="all">Todas</option>
         <option value="Gryffindor">Gryffindor</option>
         <option value="Hufflepuff">Hufflepuff </option>
         <option value="Ravenclaw">Ravenclaw</option>

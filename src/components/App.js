@@ -47,8 +47,19 @@ function App() {
     })
 
     .filter((eachCharacter) => {
-      return eachCharacter.house === searchHouse;
+      if (searchHouse === 'all') {
+        return true;
+      } else {
+        return eachCharacter.house === searchHouse;
+      }
     });
+
+  //Si lo que pone la usuaria no coincide con ningun nombre, no se si va aqui o en otro sitio
+  const characterNotFound = () => {
+    if (searchName !== '' && characterFiltered.length === 0) {
+      return <p>No hay ningún nombre que coincida con {searchName}</p>;
+    }
+  };
 
   //para coger el name del usuario, no hay id en el api
   const { pathname } = useLocation();
@@ -86,6 +97,7 @@ function App() {
             }
           />
         </Routes>
+        {characterNotFound()}
       </main>
       <Footer />
     </div>
