@@ -3,7 +3,7 @@ import FilterByHouse from './FilterByHouse';
 
 function Filters(props) {
   return (
-    <form>
+    <form action="" /*onSubmit={}*/>
       <FilterByName
         inputValue={props.inputValue}
         handleInputName={props.handleInputName}

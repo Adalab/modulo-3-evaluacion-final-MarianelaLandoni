@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function CharacterItem(props) {
   const defaultImage = (img) => {
     if (img === '') {
@@ -8,13 +10,15 @@ function CharacterItem(props) {
   };
   return (
     <li>
-      <img
-        src={defaultImage(props.character.image)}
-        alt={`Foto de ${props.character.name}`}
-        title={`Foto de ${props.character.name}`}
-      />
-      <h3>{props.character.name}</h3>
-      <p>{props.character.species}</p>
+      <Link to={`/character/${props.character.id}`}>
+        <img
+          src={defaultImage(props.character.image)}
+          alt={`Foto de ${props.character.name}`}
+          title={`Foto de ${props.character.name}`}
+        />
+        <h3>{props.character.name}</h3>
+        <p>{props.character.species}</p>
+      </Link>
     </li>
   );
 }

@@ -1,14 +1,13 @@
 import '../styles/App.scss';
 import { useState, useEffect } from 'react';
+import { useLocation, matchPath } from 'react-router';
 import { Route, Routes } from 'react-router-dom';
 import getDataApi from '../services/apiHp';
 import Header from './Header';
 import Footer from './Footer';
 import CharacterList from './Characters/CharacterList';
 import Filters from './Filters/Filters';
-
-import FilterByName from './Filters/FilterByName';
-import FilterByHouse from './Filters/FilterByHouse';
+import CharacterDetail from './Characters/CharacterDetail';
 
 function App() {
   //---VARIABLES DE ESTADO---//
@@ -51,17 +50,42 @@ function App() {
       return eachCharacter.house === searchHouse;
     });
 
+  //para coger el name del usuario, no hay id en el api
+  const { pathname } = useLocation();
+  console.log(pathname);
+  const dataPath = matchPath('/character/:id', pathname);
+  const characterId = dataPath !== null ? dataPath.params.id : null;
+  const foundCharacters = characterData.find((item) => item.id === characterId);
+
   return (
     <div>
       <Header />
       <main>
-        <Filters
-          inputValue={searchName}
-          handleInputName={handleInputName}
-          searchHouse={searchHouse}
-          handleFilterHouse={handleFilterHouse}
-        />
-        <CharacterList characterData={characterFiltered} />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Filters
+                  inputValue={searchName} //a inputValue mejor cambiarlo por searchName
+                  handleInputName={handleInputName}
+                  searchHouse={searchHouse}
+                  handleFilterHouse={handleFilterHouse}
+                />
+                <CharacterList characterData={characterFiltered} />
+              </>
+            }
+          />
+          <Route
+            path="/character/:id"
+            element={
+              <CharacterDetail
+                characterData={characterData}
+                foundCharacters={foundCharacters}
+              />
+            }
+          />
+        </Routes>
       </main>
       <Footer />
     </div>
