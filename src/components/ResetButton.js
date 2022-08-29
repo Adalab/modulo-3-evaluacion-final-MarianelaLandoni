@@ -4,6 +4,10 @@ function ResetButton(props) {
     props.handleReset();
   };
 
-  return <button onClick={handleReset}>Borrar búsqueda</button>;
+  return (
+    <button className="form__btnReset" onClick={handleReset}>
+      Borrar búsqueda
+    </button>
+  );
 }
 export default ResetButton;

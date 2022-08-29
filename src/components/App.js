@@ -9,7 +9,6 @@ import Footer from './Footer';
 import CharacterList from './Characters/CharacterList';
 import Filters from './Filters/Filters';
 import CharacterDetail from './Characters/CharacterDetail';
-import ResetButton from './ResetButton';
 
 console.log(ls); //QUITARLO
 
@@ -95,7 +94,7 @@ function App() {
   return (
     <div>
       <Header />
-      <main>
+      <main className="main">
         <Routes>
           <Route
             path="/"
@@ -106,8 +105,9 @@ function App() {
                   handleInputName={handleInputName}
                   searchHouse={searchHouse}
                   handleFilterHouse={handleFilterHouse}
+                  handleReset={handleReset}
                 />
-                <ResetButton handleReset={handleReset} />
+
                 <CharacterList characterData={characterFiltered} />
               </>
             }

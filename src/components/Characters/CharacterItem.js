@@ -9,15 +9,19 @@ function CharacterItem(props) {
     }
   };
   return (
-    <li>
-      <Link to={`/character/${props.character.id}`}>
-        <img
-          src={defaultImage(props.character.image)}
-          alt={`Foto de ${props.character.name}`}
-          title={`Foto de ${props.character.name}`}
-        />
-        <h3>{props.character.name}</h3>
-        <p>{props.character.species}</p>
+    <li className="listItem">
+      <Link className="linkItem" to={`/character/${props.character.id}`}>
+        <picture className="imgItemContainer">
+          <img
+            className="imgItem"
+            src={defaultImage(props.character.image)}
+            alt={`Foto de ${props.character.name}`}
+            title={`Foto de ${props.character.name}`}
+          />
+        </picture>
+
+        <h3 className="titleItem">{props.character.name}</h3>
+        <p className="textItem">{props.character.species}</p>
       </Link>
     </li>
   );

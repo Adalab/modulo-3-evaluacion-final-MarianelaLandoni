@@ -11,8 +11,11 @@ function FilterByName(props) {
 
   return (
     <>
-      <label htmlFor="characterName">Escribe un personaje:</label>
+      <label className="form__label" htmlFor="characterName">
+        Escribe un personaje:
+      </label>
       <input
+        className="form__input"
         type="text"
         name="characterName"
         id="characterName"

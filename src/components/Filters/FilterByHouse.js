@@ -4,8 +4,12 @@ function FilterByHouse(props) {
   };
   return (
     <>
-      <label htmlFor="filterHouse"> Filtra por casa </label>
+      <label className="form__label" htmlFor="filterHouse">
+        {' '}
+        Filtra por casa{' '}
+      </label>
       <select
+        className="form__select"
         name="filterHouse"
         id="filterHouse"
         value={props.searchHouse}

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import '../../styles/layout/characterDetail.scss';
 
 function CharacterDetail(props) {
   const isAlive = () => {
@@ -10,19 +11,26 @@ function CharacterDetail(props) {
   };
 
   return (
-    <section>
-      <Link to="/">Volver</Link>
-      <img
-        src={props.foundCharacters.image}
-        alt={`Foto de ${props.foundCharacters.name}`}
-        title={`Foto de ${props.foundCharacters.name}`}
-      />
-      <h3>{props.foundCharacters.name}</h3>
-      <p>Especie:{props.foundCharacters.species}</p>
-      <p>Casa:{props.foundCharacters.house}</p>
-      <p>Género:{props.foundCharacters.gender}</p>
-      <p>Estatus:{isAlive()}</p>
-    </section>
+    <>
+      <Link className="backBtnDetail" to="/">
+        Volver
+      </Link>
+      <section className="detailSection">
+        <img
+          className="imgDetail"
+          src={props.foundCharacters.image}
+          alt={`Foto de ${props.foundCharacters.name}`}
+          title={`Foto de ${props.foundCharacters.name}`}
+        />
+        <div className="textDetailContainer">
+          <h3 className="titleDetail">{props.foundCharacters.name}</h3>
+          <p className="textDetail">Especie: {props.foundCharacters.species}</p>
+          <p className="textDetail">Casa: {props.foundCharacters.house}</p>
+          <p className="textDetail">Género: {props.foundCharacters.gender}</p>
+          <p className="textDetail">Estatus: {isAlive()}</p>
+        </div>
+      </section>
+    </>
   );
 }
 export default CharacterDetail;
