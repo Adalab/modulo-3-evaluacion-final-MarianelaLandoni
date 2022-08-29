@@ -39,25 +39,25 @@ function CharacterDetail(props) {
     if (specie === 'human') {
       return (
         <span>
-          Humano <i class="fa-solid fa-user"></i>
+          Humano <i className="fa-solid fa-user"></i>
         </span>
       );
     } else if (specie === 'half-giant') {
       return (
         <span>
-          Medio Gigante <i class="fa-solid fa-person"></i>
+          Medio Gigante <i className="fa-solid fa-person"></i>
         </span>
       );
     } else if (specie === 'werewolf') {
       return (
         <span>
-          Hombre lobo <i class="fa-brands fa-wolf-pack-battalion"></i>
+          Hombre lobo <i className="fa-brands fa-wolf-pack-battalion"></i>
         </span>
       );
     } else if (specie === 'ghost') {
       return (
         <span>
-          Fantasma <i class="fa-solid fa-ghost"></i>
+          Fantasma <i className="fa-solid fa-ghost"></i>
         </span>
       );
     } else {

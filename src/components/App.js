@@ -21,6 +21,7 @@ function App() {
     ls.get('searchHouseLS', 'Gryffindor')
   );
   const [alphabeticOrder, setalphabeticOrder] = useState(false);
+  const [searchGender, setSearchGender] = useState('all');
   //---API---//
 
   useEffect(() => {
@@ -59,6 +60,10 @@ function App() {
     setalphabeticOrder(value);
   };
 
+  const handleFilterGender = (value) => {
+    setSearchGender(value);
+  };
+
   const handleReset = () => {
     setSearchName('');
     setSearchHouse('Gryffindor');
@@ -80,6 +85,14 @@ function App() {
         return true;
       } else {
         return eachCharacter.house === searchHouse;
+      }
+    })
+
+    .filter((eachCharacter) => {
+      if (searchGender === 'all') {
+        return true;
+      } else {
+        return eachCharacter.gender === searchGender;
       }
     });
 
@@ -128,6 +141,8 @@ function App() {
                   handleFilterHouse={handleFilterHouse}
                   handleOrderCheck={handleOrderCheck}
                   alphabeticOrder={alphabeticOrder}
+                  searchGender={searchGender}
+                  handleFilterGender={handleFilterGender}
                   handleReset={handleReset}
                 />
 

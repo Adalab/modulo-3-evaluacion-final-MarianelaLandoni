@@ -5,8 +5,7 @@ function FilterByHouse(props) {
   return (
     <>
       <label className="form__label" htmlFor="filterHouse">
-        {' '}
-        Filtra por casa{' '}
+        Filtra por casa
       </label>
       <select
         className="form__select"
