@@ -10,8 +10,8 @@ function FilterByName(props) {
   };
 
   return (
-    <label htmlFor="characterName">
-      Escribe un personaje:
+    <>
+      <label htmlFor="characterName">Escribe un personaje:</label>
       <input
         type="text"
         name="characterName"
@@ -21,7 +21,7 @@ function FilterByName(props) {
         onChange={handleInputName}
         onKeyDown={handleEnter}
       />
-    </label>
+    </>
   );
 }
 

@@ -9,14 +9,17 @@ import Footer from './Footer';
 import CharacterList from './Characters/CharacterList';
 import Filters from './Filters/Filters';
 import CharacterDetail from './Characters/CharacterDetail';
+import ResetButton from './ResetButton';
 
-console.log(ls);
+console.log(ls); //QUITARLO
 
 function App() {
   //---VARIABLES DE ESTADO---//
-  const [characterData, setCharacter] = useState([]);
-  const [searchName, setSearchName] = useState('');
-  const [searchHouse, setSearchHouse] = useState('Gryffindor');
+  const [characterData, setCharacter] = useState(ls.get('characterDataLS', []));
+  const [searchName, setSearchName] = useState(ls.get('searchNameLS', ''));
+  const [searchHouse, setSearchHouse] = useState(
+    ls.get('searchHouseLS', 'Gryffindor')
+  );
 
   //---API---//
 
@@ -26,6 +29,18 @@ function App() {
       setCharacter(data);
     });
   }, []);
+
+  //--LOCAL STORAGE--//
+
+  useEffect(() => {
+    // Guardo los datos de los personajes en el local storage
+    ls.set('characterDataLS', characterData);
+    ls.set('searchNameLS', searchName);
+    ls.set('searchHouseLS', searchHouse);
+
+    // Este useEffect solo se ejecutará cuando cambie el nombre o el email
+    console.log('Ha cambiado el nombre o el email');
+  }, [characterData, searchName, searchHouse]);
 
   //---FUNCIONES QUE EJECUTAN LAS HIJAS---//
 
@@ -38,6 +53,12 @@ function App() {
 
   const handleFilterHouse = (value) => {
     setSearchHouse(value);
+  };
+
+  const handleReset = () => {
+    setSearchName('');
+    setSearchHouse('Gryffindor');
+    ls.clear();
   };
 
   //Renderizar
@@ -86,6 +107,7 @@ function App() {
                   searchHouse={searchHouse}
                   handleFilterHouse={handleFilterHouse}
                 />
+                <ResetButton handleReset={handleReset} />
                 <CharacterList characterData={characterFiltered} />
               </>
             }
