@@ -1,7 +1,9 @@
+import '../styles/layout/footer.scss';
+
 function Footer() {
   return (
-    <footer>
-      <p>HP página</p>
+    <footer className="footer">
+      <p className="footer__creator">Página creada por Marianela Landoni</p>
     </footer>
   );
 }

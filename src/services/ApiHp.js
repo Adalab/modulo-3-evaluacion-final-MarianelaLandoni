@@ -13,6 +13,7 @@ function getDataApi() {
           gender: character.gender,
           house: character.house,
           alive: character.alive,
+          ancestry: character.ancestry,
         };
       });
       return dataClean;
