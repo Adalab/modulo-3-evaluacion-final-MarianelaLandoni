@@ -1,4 +1,5 @@
 import CharacterItem from './CharacterItem';
+import '../../styles/layout/characterList.scss';
 
 function CharacterList(props) {
   const renderCharacters = props.characterData.map((character, index) => {

@@ -20,7 +20,7 @@ function App() {
   const [searchHouse, setSearchHouse] = useState(
     ls.get('searchHouseLS', 'Gryffindor')
   );
-
+  const [alphabeticOrder, setalphabeticOrder] = useState(false);
   //---API---//
 
   useEffect(() => {
@@ -39,7 +39,7 @@ function App() {
     ls.set('searchHouseLS', searchHouse);
 
     // Este useEffect solo se ejecutará cuando cambie el nombre o el email
-    console.log('Ha cambiado el nombre o el email');
+    console.log('Ha cambiado el dato');
   }, [characterData, searchName, searchHouse]);
 
   //---FUNCIONES QUE EJECUTAN LAS HIJAS---//
@@ -55,9 +55,14 @@ function App() {
     setSearchHouse(value);
   };
 
+  const handleOrderCheck = (value) => {
+    setalphabeticOrder(value);
+  };
+
   const handleReset = () => {
     setSearchName('');
     setSearchHouse('Gryffindor');
+    // setalphabeticOrder(false); no se si quiero meter en el reset el orden alfabético
     ls.clear();
   };
 
@@ -85,6 +90,21 @@ function App() {
     }
   };
 
+  //Si el checked esta pulsado, ordena los datos. No sé si va aquí, funciona, se que coge los datos filtrados y los ordena pero que quede por aqui suelto no me convence. Si lo guardo en una arrow no funciona.
+  //Sort compara los dos valores, si a es menor que b, da negatuvo y quiere decir que va antes.
+
+  if (alphabeticOrder === true) {
+    characterFiltered.sort((a, b) => {
+      if (a.name > b.name) {
+        return 1;
+      }
+      if (a.name < b.name) {
+        return -1;
+      }
+      return 0;
+    });
+  }
+
   //para coger el name del usuario, no hay id en el api
   const { pathname } = useLocation();
   console.log(pathname);
@@ -106,6 +126,8 @@ function App() {
                   handleInputName={handleInputName}
                   searchHouse={searchHouse}
                   handleFilterHouse={handleFilterHouse}
+                  handleOrderCheck={handleOrderCheck}
+                  alphabeticOrder={alphabeticOrder}
                   handleReset={handleReset}
                 />
 
