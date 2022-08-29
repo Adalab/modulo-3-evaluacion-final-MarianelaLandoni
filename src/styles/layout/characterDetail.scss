@@ -1,53 +1,86 @@
 .detailSection {
-  width: 60%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   border: solid 1px gray;
   border-radius: 2rem;
   margin: 3rem;
 
-  @media (min-width: 320px) {
-    flex-direction: column;
+  @media all and (min-width: 768px) {
+    width: 80rem;
+    height: 50rem;
+    flex-direction: row;
   }
 }
 
 .textDetailContainer {
   margin-bottom: 2rem;
+  color: #fcf5e7;
+}
+
+.background-Gryffindor {
+  background-color: #740001;
+}
+
+.background-Slytherin {
+  background-color: #1a472a;
+}
+
+.background-Ravenclaw {
+  background-color: #222f5b;
+}
+
+.background-Hufflepuff {
+  background-color: #c2a905;
 }
 .imgDetail {
-  width: 30rem;
-  height: 40rem;
+  width: 15rem;
+  height: 20rem;
   border-radius: 2rem;
   margin: 2rem;
 
-  @media (min-width: 320px) and (max-width: 480px) {
-    width: 15rem;
-    height: 20rem;
+  @media all and (min-width: 768px) {
+    width: 30rem;
+    height: 40rem;
   }
 }
 
 .titleDetail {
-  font-size: 3rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
+
+  @media all and (min-width: 768px) {
+    font-size: 3rem;
+  }
 }
 
 .textDetail {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 0.5rem;
+
+  @media all and (min-width: 768px) {
+    font-size: 2.4rem;
+  }
 }
 
 .backBtnDetail {
   text-decoration: none;
-  color: black;
+  color: #42260e;
   font-size: 2rem;
-  border: solid 1px gray;
+  background-color: #aa8855;
   border-radius: 1rem;
   padding: 1rem;
   margin-left: 3.5rem;
 }
 
 .imgHouseDetail {
-  width: 15rem;
-  height: 15rem;
+  width: 10rem;
+  height: 10rem;
+  margin-bottom: 2rem;
+
+  @media all and (min-width: 768px) {
+    width: 20rem;
+    height: 20rem;
+  }
 }

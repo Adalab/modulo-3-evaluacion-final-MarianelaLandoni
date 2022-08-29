@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
+import imageNotFound from '../../images/imageNotFound.jpg';
 
 function CharacterItem(props) {
   const defaultImage = (img) => {
     if (img === '') {
-      return 'https://image.winudf.com/v2/image1/Y29tLmVyZ2UuaGFycnlwd3Bfc2NyZWVuXzBfMTU0ODk0NDk2OV8wNTE/screen-0.jpg?fakeurl=1&type=.webp';
+      return imageNotFound;
     } else {
       return props.character.image;
     }

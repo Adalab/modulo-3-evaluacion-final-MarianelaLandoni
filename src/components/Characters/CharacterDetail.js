@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
-import GryffindorShield from '../../images/gryffindor.jpg';
-import SlytherinShield from '../../images/slytherin.jpg';
-import HufflepuffShield from '../../images/hufflepuff.png';
-import RavenclawShield from '../../images/ravenclaw.jpg';
+import imageNotFound from '../../images/imageNotFound.jpg';
+import GryffindorShield from '../../images/gryffindor-crest.svg';
+import SlytherinShield from '../../images/slytherin-crest.svg';
+import HufflepuffShield from '../../images/hufflepuff-crest.svg';
+import RavenclawShield from '../../images/ravenclaw-crest.svg';
 import '../../styles/layout/characterDetail.scss';
 
 function CharacterDetail(props) {
-  const isAlive = () => {
-    if (props.foundCharacters.alive) {
+  const isAlive = (character) => {
+    if (character) {
       return (
         <span>
           Vivo <i className="fa-solid fa-heart-pulse"></i>
@@ -16,14 +17,13 @@ function CharacterDetail(props) {
     } else {
       return (
         <span>
-          Muerto <i class="fa-solid fa-skull-crossbones"></i>
+          Muerto <i className="fa-solid fa-skull-crossbones"></i>
         </span>
       );
     }
   };
 
-  const houseShield = () => {
-    const house = props.foundCharacters.house;
+  const houseShield = (house) => {
     if (house === 'Gryffindor') {
       return GryffindorShield;
     } else if (house === 'Slytherin') {
@@ -34,31 +34,76 @@ function CharacterDetail(props) {
       return HufflepuffShield;
     }
   };
+
+  const isHuman = (specie) => {
+    if (specie === 'human') {
+      return (
+        <span>
+          Humano <i class="fa-solid fa-user"></i>
+        </span>
+      );
+    } else if (specie === 'half-giant') {
+      return (
+        <span>
+          Medio Gigante <i class="fa-solid fa-person"></i>
+        </span>
+      );
+    } else if (specie === 'werewolf') {
+      return (
+        <span>
+          Hombre lobo <i class="fa-brands fa-wolf-pack-battalion"></i>
+        </span>
+      );
+    } else if (specie === 'ghost') {
+      return (
+        <span>
+          Fantasma <i class="fa-solid fa-ghost"></i>
+        </span>
+      );
+    } else {
+      return <span>Desconocido</span>;
+    }
+  };
+
+  const notFoundImage = () => {
+    if (props.foundCharacters.image === '') {
+      return imageNotFound;
+    } else {
+      return props.foundCharacters.image;
+    }
+  };
   return (
     <>
       <Link className="backBtnDetail" to="/">
         Volver
       </Link>
-      <section className="detailSection">
+      <section
+        className={`detailSection background-${props.foundCharacters.house}`}
+      >
         <img
           className="imgDetail"
-          src={props.foundCharacters.image}
+          src={notFoundImage()}
           alt={`Foto de ${props.foundCharacters.name}`}
           title={`Foto de ${props.foundCharacters.name}`}
         />
+
         <div className="textDetailContainer">
           <h3 className="titleDetail">{props.foundCharacters.name}</h3>
-          <p className="textDetail">Especie: {props.foundCharacters.species}</p>
+          <p className="textDetail">
+            Especie: {isHuman(props.foundCharacters.species)}
+          </p>
           <p className="textDetail">Casa: {props.foundCharacters.house}</p>
           <p className="textDetail">Género: {props.foundCharacters.gender}</p>
-          <p className="textDetail">Estatus: {isAlive()}</p>
+          <p className="textDetail">
+            Estatus: {isAlive(props.foundCharacters.alive)}
+          </p>
           <p className="textDetail">
             Ancestro: {props.foundCharacters.ancestry}
           </p>
         </div>
         <img
           className="imgHouseDetail"
-          src={houseShield()}
+          src={houseShield(props.foundCharacters.house)}
           alt={`Escudo de ${props.foundCharacters.house}`}
           title={`Escudo de ${props.foundCharacters.house}`}
         />
