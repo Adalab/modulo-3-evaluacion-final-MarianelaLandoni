@@ -3,8 +3,7 @@ import imageNotFound from '../../images/imageNotFound.jpg';
 import '../../styles/layout/characterList.scss';
 
 function CharacterItem(props) {
-  const defaultImage = (img) =>
-    img === '' ? imageNotFound : props.character.image;
+  const defaultImage = (img) => (img === '' ? imageNotFound : img);
 
   return (
     <li className="listItem">

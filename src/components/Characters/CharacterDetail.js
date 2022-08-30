@@ -4,6 +4,7 @@ import GryffindorShield from '../../images/gryffindor-crest.svg';
 import SlytherinShield from '../../images/slytherin-crest.svg';
 import HufflepuffShield from '../../images/hufflepuff-crest.svg';
 import RavenclawShield from '../../images/ravenclaw-crest.svg';
+import WizardingWorld from '../../images/wizard-world.svg';
 import '../../styles/layout/characterDetail.scss';
 
 function CharacterDetail(props) {
@@ -27,6 +28,8 @@ function CharacterDetail(props) {
       return RavenclawShield;
     } else if (house === 'Hufflepuff') {
       return HufflepuffShield;
+    } else {
+      return WizardingWorld;
     }
   };
 
@@ -60,10 +63,7 @@ function CharacterDetail(props) {
     }
   };
 
-  const notFoundImage = () =>
-    props.foundCharacters.image === ''
-      ? imageNotFound
-      : props.foundCharacters.image;
+  const notFoundImage = (img) => (img === '' ? imageNotFound : img);
 
   return (
     <>
@@ -75,7 +75,7 @@ function CharacterDetail(props) {
       >
         <img
           className="imgDetail"
-          src={notFoundImage()}
+          src={notFoundImage(props.foundCharacters.image)}
           alt={`Foto de ${props.foundCharacters.name}`}
           title={`Foto de ${props.foundCharacters.name}`}
         />

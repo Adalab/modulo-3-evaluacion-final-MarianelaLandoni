@@ -1,17 +1,21 @@
-import '../styles/App.scss';
 import { useState, useEffect } from 'react';
 import { useLocation, matchPath } from 'react-router';
 import { Route, Routes } from 'react-router-dom';
+//Servicios
 import getDataApi from '../services/apiHp';
 import ls from '../services/localStorage';
+//Componentes
 import Header from './Header';
 import Footer from './Footer';
 import CharacterList from './Characters/CharacterList';
 import Filters from './Filters/Filters';
 import CharacterDetail from './Characters/CharacterDetail';
+//Estilos
+import '../styles/App.scss';
 
 function App() {
   //---VARIABLES DE ESTADO---//
+
   const [characterData, setCharacter] = useState(ls.get('characterDataLS', []));
   const [searchName, setSearchName] = useState(ls.get('searchNameLS', ''));
   const [searchHouse, setSearchHouse] = useState(
@@ -21,6 +25,7 @@ function App() {
   const [searchGender, setSearchGender] = useState(
     ls.get('searchGenderLS', 'all')
   );
+  console.log(characterData);
   //---API---//
 
   useEffect(() => {
@@ -32,20 +37,13 @@ function App() {
   //--LOCAL STORAGE--//
 
   useEffect(() => {
-    // Guardo los datos de los personajes en el local storage
     ls.set('characterDataLS', characterData);
     ls.set('searchNameLS', searchName);
     ls.set('searchHouseLS', searchHouse);
     ls.set('searchGenderLS', searchGender);
-
-    // Este useEffect solo se ejecutará cuando cambien las distintas opciones
-    console.log('Ha cambiado el dato');
   }, [characterData, searchName, searchHouse, searchGender]);
 
-  //---FUNCIONES QUE EJECUTAN LAS HIJAS---//
-
-  //Función para buscar por nombre//
-  //Función que guarda el input de la usuaria
+  //---FUNCIONES MANEJADORAS---//
 
   const handleInputName = (value) => {
     setSearchName(value);
@@ -66,12 +64,10 @@ function App() {
   const handleReset = () => {
     setSearchName('');
     setSearchHouse('Gryffindor');
-    // setalphabeticOrder(false); no se si quiero meter en el reset el orden alfabético
     setSearchGender('all');
-    ls.clear();
   };
 
-  //Renderizar
+  //--RENDERIZAR--//
 
   const characterFiltered = characterData
     .filter((eachCharacter) => {
@@ -96,11 +92,6 @@ function App() {
       }
     });
 
-  //Si lo que pone la usuaria no coincide con ningun nombre, no se si va aqui o en otro sitio
-
-  //Si el checked esta pulsado, ordena los datos. No sé si va aquí, funciona, se que coge los datos filtrados y los ordena pero que quede por aqui suelto no me convence. Si lo guardo en una arrow no funciona.
-  //Sort compara los dos valores, si a es menor que b, da negatuvo y quiere decir que va antes.
-
   if (alphabeticOrder === true) {
     characterFiltered.sort((a, b) => {
       if (a.name > b.name) {
@@ -113,9 +104,9 @@ function App() {
     });
   }
 
-  //para coger el name del usuario, no hay id en el api
+  //--RUTA DINÁMICA--//
+
   const { pathname } = useLocation();
-  console.log(pathname);
   const dataPath = matchPath('/character/:id', pathname);
   const characterId = dataPath !== null ? dataPath.params.id : null;
   const foundCharacters = characterData.find((item) => item.id === characterId);
@@ -130,7 +121,7 @@ function App() {
             element={
               <>
                 <Filters
-                  inputValue={searchName} //a inputValue mejor cambiarlo por searchName
+                  searchName={searchName}
                   handleInputName={handleInputName}
                   searchHouse={searchHouse}
                   handleFilterHouse={handleFilterHouse}
@@ -150,12 +141,7 @@ function App() {
           />
           <Route
             path="/character/:id"
-            element={
-              <CharacterDetail
-                characterData={characterData}
-                foundCharacters={foundCharacters}
-              />
-            }
+            element={<CharacterDetail foundCharacters={foundCharacters} />}
           />
         </Routes>
       </main>

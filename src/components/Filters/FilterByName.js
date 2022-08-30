@@ -20,7 +20,7 @@ function FilterByName(props) {
         name="characterName"
         id="characterName"
         placeholder="Dobby"
-        value={props.inputValue}
+        value={props.searchName}
         onChange={handleInputName}
         onKeyDown={handleEnter}
       />
