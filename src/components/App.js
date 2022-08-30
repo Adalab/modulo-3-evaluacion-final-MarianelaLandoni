@@ -25,7 +25,7 @@ function App() {
   const [searchGender, setSearchGender] = useState(
     ls.get('searchGenderLS', 'all')
   );
-  console.log(characterData);
+
   //---API---//
 
   useEffect(() => {
@@ -125,8 +125,8 @@ function App() {
                   handleInputName={handleInputName}
                   searchHouse={searchHouse}
                   handleFilterHouse={handleFilterHouse}
-                  handleOrderCheck={handleOrderCheck}
                   alphabeticOrder={alphabeticOrder}
+                  handleOrderCheck={handleOrderCheck}
                   searchGender={searchGender}
                   handleFilterGender={handleFilterGender}
                   handleReset={handleReset}
@@ -134,7 +134,7 @@ function App() {
 
                 <CharacterList
                   characterData={characterFiltered}
-                  inputValue={searchName}
+                  searchName={searchName}
                 />
               </>
             }

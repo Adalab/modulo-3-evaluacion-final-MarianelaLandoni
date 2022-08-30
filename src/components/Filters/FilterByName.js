@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function FilterByName(props) {
   const handleInputName = (ev) => {
     props.handleInputName(ev.target.value);
@@ -16,10 +18,10 @@ function FilterByName(props) {
       </label>
       <input
         className="form__input"
-        type="text"
+        type={props.inputType}
         name="characterName"
         id="characterName"
-        placeholder="Dobby"
+        placeholder={props.inputPlaceholder}
         value={props.searchName}
         onChange={handleInputName}
         onKeyDown={handleEnter}
@@ -28,4 +30,14 @@ function FilterByName(props) {
   );
 }
 
+FilterByName.defaultProps = {
+  inputType: 'text',
+  inputPlaceholder: 'Dobby',
+};
+
+FilterByName.propTypes = {
+  inputType: PropTypes.string,
+  inputPlaceholder: PropTypes.string,
+  handleInputName: PropTypes.func.isRequired,
+};
 export default FilterByName;
