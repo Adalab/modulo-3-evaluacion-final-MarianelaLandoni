@@ -7,21 +7,16 @@ import RavenclawShield from '../../images/ravenclaw-crest.svg';
 import '../../styles/layout/characterDetail.scss';
 
 function CharacterDetail(props) {
-  const isAlive = (character) => {
-    if (character) {
-      return (
-        <span>
-          Vivo <i className="fa-solid fa-heart-pulse"></i>
-        </span>
-      );
-    } else {
-      return (
-        <span>
-          Muerto <i className="fa-solid fa-skull-crossbones"></i>
-        </span>
-      );
-    }
-  };
+  const isAlive = (character) =>
+    character ? (
+      <span>
+        Vivo <i className="fa-solid fa-heart-pulse"></i>
+      </span>
+    ) : (
+      <span>
+        Muerto <i className="fa-solid fa-skull-crossbones"></i>
+      </span>
+    );
 
   const houseShield = (house) => {
     if (house === 'Gryffindor') {
@@ -65,13 +60,11 @@ function CharacterDetail(props) {
     }
   };
 
-  const notFoundImage = () => {
-    if (props.foundCharacters.image === '') {
-      return imageNotFound;
-    } else {
-      return props.foundCharacters.image;
-    }
-  };
+  const notFoundImage = () =>
+    props.foundCharacters.image === ''
+      ? imageNotFound
+      : props.foundCharacters.image;
+
   return (
     <>
       <Link className="backBtnDetail" to="/">

@@ -2,7 +2,6 @@ import '../styles/App.scss';
 import { useState, useEffect } from 'react';
 import { useLocation, matchPath } from 'react-router';
 import { Route, Routes } from 'react-router-dom';
-
 import getDataApi from '../services/apiHp';
 import ls from '../services/localStorage';
 import Header from './Header';
@@ -10,8 +9,6 @@ import Footer from './Footer';
 import CharacterList from './Characters/CharacterList';
 import Filters from './Filters/Filters';
 import CharacterDetail from './Characters/CharacterDetail';
-
-console.log(ls); //QUITARLO
 
 function App() {
   //---VARIABLES DE ESTADO---//
@@ -21,12 +18,13 @@ function App() {
     ls.get('searchHouseLS', 'Gryffindor')
   );
   const [alphabeticOrder, setalphabeticOrder] = useState(false);
-  const [searchGender, setSearchGender] = useState('all');
+  const [searchGender, setSearchGender] = useState(
+    ls.get('searchGenderLS', 'all')
+  );
   //---API---//
 
   useEffect(() => {
     getDataApi().then((data) => {
-      // console.log(data); acordarme de quitarlo
       setCharacter(data);
     });
   }, []);
@@ -38,10 +36,11 @@ function App() {
     ls.set('characterDataLS', characterData);
     ls.set('searchNameLS', searchName);
     ls.set('searchHouseLS', searchHouse);
+    ls.set('searchGenderLS', searchGender);
 
-    // Este useEffect solo se ejecutará cuando cambie el nombre o el email
+    // Este useEffect solo se ejecutará cuando cambien las distintas opciones
     console.log('Ha cambiado el dato');
-  }, [characterData, searchName, searchHouse]);
+  }, [characterData, searchName, searchHouse, searchGender]);
 
   //---FUNCIONES QUE EJECUTAN LAS HIJAS---//
 
@@ -68,6 +67,7 @@ function App() {
     setSearchName('');
     setSearchHouse('Gryffindor');
     // setalphabeticOrder(false); no se si quiero meter en el reset el orden alfabético
+    setSearchGender('all');
     ls.clear();
   };
 
@@ -97,11 +97,6 @@ function App() {
     });
 
   //Si lo que pone la usuaria no coincide con ningun nombre, no se si va aqui o en otro sitio
-  const characterNotFound = () => {
-    if (searchName !== '' && characterFiltered.length === 0) {
-      return <p>No hay ningún nombre que coincida con {searchName}</p>;
-    }
-  };
 
   //Si el checked esta pulsado, ordena los datos. No sé si va aquí, funciona, se que coge los datos filtrados y los ordena pero que quede por aqui suelto no me convence. Si lo guardo en una arrow no funciona.
   //Sort compara los dos valores, si a es menor que b, da negatuvo y quiere decir que va antes.
@@ -146,7 +141,10 @@ function App() {
                   handleReset={handleReset}
                 />
 
-                <CharacterList characterData={characterFiltered} />
+                <CharacterList
+                  characterData={characterFiltered}
+                  inputValue={searchName}
+                />
               </>
             }
           />
@@ -160,7 +158,6 @@ function App() {
             }
           />
         </Routes>
-        {characterNotFound()}
       </main>
       <Footer />
     </div>

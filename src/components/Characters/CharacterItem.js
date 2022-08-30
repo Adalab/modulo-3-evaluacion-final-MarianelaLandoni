@@ -1,14 +1,11 @@
 import { Link } from 'react-router-dom';
 import imageNotFound from '../../images/imageNotFound.jpg';
+import '../../styles/layout/characterList.scss';
 
 function CharacterItem(props) {
-  const defaultImage = (img) => {
-    if (img === '') {
-      return imageNotFound;
-    } else {
-      return props.character.image;
-    }
-  };
+  const defaultImage = (img) =>
+    img === '' ? imageNotFound : props.character.image;
+
   return (
     <li className="listItem">
       <Link className="linkItem" to={`/character/${props.character.id}`}>
