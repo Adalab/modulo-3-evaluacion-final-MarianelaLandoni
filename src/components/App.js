@@ -67,7 +67,7 @@ function App() {
     setSearchGender('all');
   };
 
-  //--RENDERIZAR--//
+  //--FILTROS--//
 
   const characterFiltered = characterData
     .filter((eachCharacter) => {

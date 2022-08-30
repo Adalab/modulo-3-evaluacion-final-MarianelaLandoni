@@ -5,7 +5,7 @@ function ResetButton(props) {
   };
 
   return (
-    <button className="form__btnReset" onClick={handleReset}>
+    <button type="reset" className="form__btnReset" onClick={handleReset}>
       Borrar búsqueda
     </button>
   );
