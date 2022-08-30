@@ -1,17 +1,19 @@
 {
   "files": {
-    "main.css": "./static/css/main.30145e23.css",
-    "main.js": "./static/js/main.a0c11393.js",
-    "static/media/hufflepuff.png": "./static/media/hufflepuff.e63bbc6030801cb40fea.png",
-    "static/media/gryffindor.jpg": "./static/media/gryffindor.445fbc29cf9ca5d650e5.jpg",
-    "static/media/slytherin.jpg": "./static/media/slytherin.0bcc9ffea599642117fe.jpg",
-    "static/media/ravenclaw.jpg": "./static/media/ravenclaw.722995a1e8ecefbeaf37.jpg",
+    "main.css": "./static/css/main.db2a3ef9.css",
+    "main.js": "./static/js/main.9d140bef.js",
+    "static/media/imageNotFound.jpg": "./static/media/imageNotFound.2cd5933f395e54691649.jpg",
+    "static/media/wizard-world.svg": "./static/media/wizard-world.030eb5a794b8a762b5af266fc7cb1b31.svg",
+    "static/media/slytherin-crest.svg": "./static/media/slytherin-crest.f6cf0fb18e11a6592b52af0d7af97de1.svg",
+    "static/media/ravenclaw-crest.svg": "./static/media/ravenclaw-crest.9b260563565615d5506815d212cf0bf4.svg",
+    "static/media/hufflepuff-crest.svg": "./static/media/hufflepuff-crest.babfe7929cf9879e2ac085829fb2cd0d.svg",
+    "static/media/gryffindor-crest.svg": "./static/media/gryffindor-crest.0b0e081bd043084d7640a48cc43c2086.svg",
     "index.html": "./index.html",
-    "main.30145e23.css.map": "./static/css/main.30145e23.css.map",
-    "main.a0c11393.js.map": "./static/js/main.a0c11393.js.map"
+    "main.db2a3ef9.css.map": "./static/css/main.db2a3ef9.css.map",
+    "main.9d140bef.js.map": "./static/js/main.9d140bef.js.map"
   },
   "entrypoints": [
-    "static/css/main.30145e23.css",
-    "static/js/main.a0c11393.js"
+    "static/css/main.db2a3ef9.css",
+    "static/js/main.9d140bef.js"
   ]
 }
