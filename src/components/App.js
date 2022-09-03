@@ -25,7 +25,7 @@ function App() {
   const [searchGender, setSearchGender] = useState(
     ls.get('searchGenderLS', 'all')
   );
-  const [filterActor, setFilterActor] = useState('');
+  // const [filterActor, setFilterActor] = useState('');
 
   //---API---//
 
@@ -50,9 +50,9 @@ function App() {
     setSearchName(value);
   };
 
-  const handleFilterActor = (value) => {
-    setFilterActor(value);
-  };
+  // const handleFilterActor = (value) => {
+  //   setFilterActor(value);
+  // };
 
   const handleFilterHouse = (value) => {
     setSearchHouse(value);
@@ -75,17 +75,24 @@ function App() {
   //--FILTROS--//
 
   const characterFiltered = characterData
+
+    //--Filtro por nombre--//
+
     .filter((eachCharacter) => {
       return eachCharacter.name
         .toLowerCase()
         .includes(searchName.toLocaleLowerCase());
     })
 
-    .filter((eachCharacter) => {
-      return eachCharacter.actor
-        .toLowerCase()
-        .includes(filterActor.toLowerCase());
-    })
+    //--Filtro por actor--//
+
+    // .filter((eachCharacter) => {
+    //   return eachCharacter.actor
+    //     .toLowerCase()
+    //     .includes(filterActor.toLowerCase());
+    // })
+
+    //--Filtro por casa--//
 
     .filter((eachCharacter) => {
       if (searchHouse === 'all') {
@@ -95,6 +102,8 @@ function App() {
       }
     })
 
+    //--Filtro por género--//
+
     .filter((eachCharacter) => {
       if (searchGender === 'all') {
         return true;
@@ -102,6 +111,8 @@ function App() {
         return eachCharacter.gender === searchGender;
       }
     });
+
+  //--Orden alfabético--//
 
   if (alphabeticOrder === true) {
     characterFiltered.sort((a, b) => {
@@ -123,7 +134,20 @@ function App() {
   const foundCharacters = characterData.find((item) => item.id === characterId);
 
   return (
-    <div>
+    <div className="background">
+      <span className="backgroundSpan"></span>
+      <span className="backgroundSpan"></span>
+      <span className="backgroundSpan"></span>
+      <span className="backgroundSpan"></span>
+      <span className="backgroundSpan"></span>
+      <span className="backgroundSpan"></span>
+      <span className="backgroundSpan"></span>
+      <span className="backgroundSpan"></span>
+      <span className="backgroundSpan"></span>
+      <span className="backgroundSpan"></span>
+      <span className="backgroundSpan"></span>
+      <span className="backgroundSpan"></span>
+      <span className="backgroundSpan"></span>
       <Header />
       <main className="main">
         <Routes>
@@ -141,8 +165,8 @@ function App() {
                   searchGender={searchGender}
                   handleFilterGender={handleFilterGender}
                   handleReset={handleReset}
-                  filterActor={filterActor}
-                  handleFilterActor={handleFilterActor}
+                  // filterActor={filterActor}
+                  // handleFilterActor={handleFilterActor}
                 />
 
                 <CharacterList

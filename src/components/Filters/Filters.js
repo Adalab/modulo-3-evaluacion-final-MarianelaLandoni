@@ -4,7 +4,7 @@ import '../../styles/layout/filters.scss';
 import ResetButton from '../ResetButton';
 import AlphabeticalOrder from '../Filters/AlphabeticalOrder';
 import FilterByGender from './FilterByGender';
-import FilterActor from './FilterActor';
+// import FilterActor from './FilterActor';
 
 function Filters(props) {
   const handleForm = (ev) => {
@@ -18,10 +18,10 @@ function Filters(props) {
           handleInputName={props.handleInputName}
         />
 
-        <FilterActor
+        {/* <FilterActor
           filterActor={props.filterActor}
           handleFilterActor={props.handleFilterActor}
-        />
+        /> */}
 
         <FilterByHouse
           searchHouse={props.searchHouse}
