@@ -25,6 +25,7 @@ function App() {
   const [searchGender, setSearchGender] = useState(
     ls.get('searchGenderLS', 'all')
   );
+  const [filterActor, setFilterActor] = useState('');
 
   //---API---//
 
@@ -47,6 +48,10 @@ function App() {
 
   const handleInputName = (value) => {
     setSearchName(value);
+  };
+
+  const handleFilterActor = (value) => {
+    setFilterActor(value);
   };
 
   const handleFilterHouse = (value) => {
@@ -74,6 +79,12 @@ function App() {
       return eachCharacter.name
         .toLowerCase()
         .includes(searchName.toLocaleLowerCase());
+    })
+
+    .filter((eachCharacter) => {
+      return eachCharacter.actor
+        .toLowerCase()
+        .includes(filterActor.toLowerCase());
     })
 
     .filter((eachCharacter) => {
@@ -130,6 +141,8 @@ function App() {
                   searchGender={searchGender}
                   handleFilterGender={handleFilterGender}
                   handleReset={handleReset}
+                  filterActor={filterActor}
+                  handleFilterActor={handleFilterActor}
                 />
 
                 <CharacterList

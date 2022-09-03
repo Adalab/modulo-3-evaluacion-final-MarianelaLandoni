@@ -14,6 +14,7 @@ function getDataApi() {
           house: character.house,
           alive: character.alive,
           ancestry: character.ancestry,
+          actor: character.actor,
         };
       });
       return dataClean;
