@@ -11,36 +11,38 @@ function Filters(props) {
     ev.preventDefault();
   };
   return (
-    <section>
-      <form className="form" action="" onSubmit={handleForm}>
-        <FilterByName
-          searchName={props.searchName}
-          handleInputName={props.handleInputName}
-        />
+    <>
+      <section>
+        <form className="form" onSubmit={handleForm}>
+          <FilterByName
+            searchName={props.searchName}
+            handleInputName={props.handleInputName}
+          />
 
-        {/* <FilterActor
+          {/* <FilterActor
           filterActor={props.filterActor}
           handleFilterActor={props.handleFilterActor}
         /> */}
 
-        <FilterByHouse
-          searchHouse={props.searchHouse}
-          handleFilterHouse={props.handleFilterHouse}
-        />
+          <FilterByHouse
+            searchHouse={props.searchHouse}
+            handleFilterHouse={props.handleFilterHouse}
+          />
 
-        <FilterByGender
-          searchGender={props.searchGender}
-          handleFilterGender={props.handleFilterGender}
-        />
+          <FilterByGender
+            searchGender={props.searchGender}
+            handleFilterGender={props.handleFilterGender}
+          />
 
-        <AlphabeticalOrder
-          handleOrderCheck={props.handleOrderCheck}
-          alphabeticOrder={props.alphabeticOrder}
-        />
+          <AlphabeticalOrder
+            handleOrderCheck={props.handleOrderCheck}
+            alphabeticOrder={props.alphabeticOrder}
+          />
 
-        <ResetButton handleReset={props.handleReset} />
-      </form>
-    </section>
+          <ResetButton handleReset={props.handleReset} />
+        </form>
+      </section>
+    </>
   );
 }
 
