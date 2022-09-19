@@ -16,13 +16,13 @@ Y ordenar los nombres **alfabéticamente**.
 Si quieres **ver el código y jugar con él** tienes que:
 
 - Clonarte el repositorio en tu ordenador mediante el comando git clone y copiar la url:
-  _git clone_ https://github.com/Adalab/modulo-3-evaluacion-final-MarianelaLandoni.git
+  _git clone_ https://github.com/MarianelaLandoni/Harry-Potter-Searcher.git
 
 - Instalar mediante el comando _npm install_
 
 - Empezar con el comando _npm start_
 
-Si solamente **quieres ver la página**, clica en el siguiente enlace: http://beta.adalab.es/modulo-3-evaluacion-final-MarianelaLandoni/
+Si solamente **quieres ver la página**, clica en el siguiente enlace: https://marianelalandoni.github.io/Harry-Potter-Searcher/
 
 ### 2.Tecnologías utilizadas
 
