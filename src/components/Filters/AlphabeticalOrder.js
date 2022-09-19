@@ -4,7 +4,9 @@ function AlphabeticalOrder(props) {
   };
   return (
     <>
-      <label htmlFor="alphaOrder">Ordenar alfabéticamente</label>
+      <label htmlFor="alphaOrder" className="form__label">
+        Ordenar alfabéticamente
+      </label>
       <input
         type="checkbox"
         name="alphaOrder"
